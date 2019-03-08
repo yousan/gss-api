@@ -1,0 +1,10 @@
+{
+    "alias": "gss-api",
+    "builds": [
+        { "src": "*.php", "use": "@now/php" }
+    ],
+    "files": [
+        "v1.php"
+    ],
+    "version": 2
+}
