@@ -100,17 +100,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var gss_csv_url = new gss_csv_url__WEBPACK_IMPORTED_MODULE_0___default.a();
-var url = 'https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114';
-console.log(gss_csv_url.url(url));
+var gss_csv_url = new gss_csv_url__WEBPACK_IMPORTED_MODULE_0___default.a(); // サンプル動作
+// const sample_url = 'https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114';
+// console.log(gss_csv_url.url(sample_url));
+
+var base_url = 'https://gss-api-p2xtmy7uh.now.sh/v1.php';
 
 var buttonClicked = function buttonClicked(_ref) {
   var target = _ref.target;
-  console.log('hoge');
+
+  /**
+   * Inputに入っているURL
+   */
+  var url = document.getElementById('url').value;
+  var gss_id = gss_csv_url.fileid(url);
+  var gid = gss_csv_url.gid(url);
+  var output_url = base_url + '?gss_id=' + gss_id + '&gid=' + gid;
+  document.getElementById('output-url').value = output_url;
   target.classList.toggle('teal');
 };
 
-console.log(document.getElementById('convert-button'));
 document.getElementById('convert-button').onclick = buttonClicked;
 
 /***/ }),
