@@ -15,10 +15,12 @@
     "babel-loader": "^8.0.5",
     "gss-csv-url": "^1.1.1",
     "jest": "^24.3.1",
+    "now": "^14.0.3",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "css-loader": "^2.1.1"
   }
 }

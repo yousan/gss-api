@@ -73,6 +73,7 @@ function main() {
 	$url = 'https://docs.google.com/spreadsheets/d/' . $gss_id . '/export?format=csv&gid=' . $gid;
 
 	$data = parseCSV($url);
+	header("Access-Control-Allow-Origin: *");
 
 	echo json_encode($data);
 }
