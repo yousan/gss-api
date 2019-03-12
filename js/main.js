@@ -48,7 +48,7 @@ const refreshCurl = (gss_id, gid) => {
 };
 
 /**
- * ボタン押下時
+ * URL変化の際にリフレッシュ
  *
  * @param target
  */
@@ -71,7 +71,4 @@ const refresh = ({target}) => {
 document.addEventListener('DOMContentLoaded',function() {
     document.getElementById('url').onchange = refresh;
     refresh(document.getElementById('url'));
-    // document.querySelector('select[name="ice-cream"]').onchange=changeEventHandler;
 },false);
-
-

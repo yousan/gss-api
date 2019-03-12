@@ -142,7 +142,7 @@ var refreshCurl = function refreshCurl(gss_id, gid) {
   document.getElementById('output_url').value = output_url;
 };
 /**
- * ボタン押下時
+ * URL変化の際にリフレッシュ
  *
  * @param target
  */
@@ -165,7 +165,7 @@ var refresh = function refresh(_ref) {
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('url').onchange = refresh;
-  refresh(document.getElementById('url')); // document.querySelector('select[name="ice-cream"]').onchange=changeEventHandler;
+  refresh(document.getElementById('url'));
 }, false);
 
 /***/ }),
