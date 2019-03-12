@@ -138,8 +138,9 @@ function request(gss_id, gid) {
 
 
 var refreshCurl = function refreshCurl(gss_id, gid) {
-  var output_url = base_url + '?gss_id=' + gss_id + '&gid=' + gid;
-  document.getElementById('output_url').value = output_url;
+  var output_url = base_url + '/v1.php?gss_id=' + gss_id + '&gid=' + gid;
+  var output = "curl '" + output_url + "'";
+  document.getElementById('output_url').value = output;
 };
 /**
  * URL変化の際にリフレッシュ

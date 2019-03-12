@@ -42,9 +42,10 @@ function request(gss_id, gid) {
  * @type {{}}
  */
 const refreshCurl = (gss_id, gid) => {
-    const output_url = base_url + '?gss_id=' + gss_id + '&gid=' + gid;
+    const output_url = base_url + '/v1.php?gss_id=' + gss_id + '&gid=' + gid;
+    const output = "curl '"+output_url+"'";
 
-    document.getElementById('output_url').value = output_url;
+    document.getElementById('output_url').value = output;
 };
 
 /**
