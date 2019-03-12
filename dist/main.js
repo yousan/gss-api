@@ -86,10 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./index.js":
-/*!******************!*\
-  !*** ./index.js ***!
-  \******************/
+/***/ "./js/main.js":
+/*!********************!*\
+  !*** ./js/main.js ***!
+  \********************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11746,14 +11746,14 @@ module.exports = g;
 /***/ }),
 
 /***/ 0:
-/*!****************************************!*\
-  !*** multi @babel/polyfill ./index.js ***!
-  \****************************************/
+/*!******************************************!*\
+  !*** multi @babel/polyfill ./js/main.js ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! @babel/polyfill */"./node_modules/@babel/polyfill/lib/index.js");
-module.exports = __webpack_require__(/*! ./index.js */"./index.js");
+module.exports = __webpack_require__(/*! ./js/main.js */"./js/main.js");
 
 
 /***/ })
