@@ -1,5 +1,5 @@
 {
-    "alias": "gss-api",
+    "alias": ["gss-api"],
     "files": [
         "v1.php", "index.html", "dist/main.js"
     ],
