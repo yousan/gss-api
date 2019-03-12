@@ -1,5 +1,11 @@
 {
     "alias": "gss-api",
+    "builds": [
+        { "src": "*.html", "use": "@now/static" },
+        { "src": "dist/*", "use": "@now/static" },
+        { "src": "images/*", "use": "@now/static" },
+        { "src": "*.php", "use": "@now/php" }
+    ],
     "files": [
         "v1.php", "index.html", "dist/main.js"
     ],

@@ -8,31 +8,46 @@
     <title>GSS API</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        div.main {
+            padding: 10px;
+        }
 
+        .icon {
+            display: inline-block;
+            background-image: url("./images/new-tab.png");
+            width: 1em;
+            height: 1em;
+            stroke-width: 0;
+            stroke: currentColor;
+            fill: currentColor;
+        }
+    </style>
 </head>
 <body>
 <div class="main">
-    Googleスプレッドシート(GSS)をREST APIのGETっぽく使えるようにするゲートウェイ。<br>
-    GSSの共有URLを入力すると、RESTで取得できるURLを生成します。<br>
-
+    Googleスプレッドシート(GSS)をREST APIのGETとして取得します。<br>
+    GSSの共有URLを入力するとRESTで取得できるURLを生成します。<br>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">GSS URL</span>
         </div>
         <input type="text" id="url" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
                placeholder="https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114"
-               value="https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114"
+               value=""
         >
     </div>
-
-    <button type="button" id="convert-button" class="btn btn-outline-secondary">GET API</button>
+    <a class="test_with_sample" href="#">Test with sample</a>
+    <a class="icon" target="_blank" href="https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114"></a>
 
     <div>
-        <textarea id="output-url" class="form-control" aria-label="With textarea"></textarea>
+        cURL Command:
+        <textarea id="output_url" rows="5" class="form-control" aria-label="With textarea"></textarea>
     </div>
 
     <div>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
+        Sample Response:
+        <textarea id="response" rows="5" class="form-control" aria-label="With textarea"></textarea>
     </div>
 </div>
 </body>

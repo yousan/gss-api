@@ -86,10 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./index.js":
-/*!******************!*\
-  !*** ./index.js ***!
-  \******************/
+/***/ "./js/main.js":
+/*!********************!*\
+  !*** ./js/main.js ***!
+  \********************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -103,43 +103,81 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var gss_csv_url = new gss_csv_url__WEBPACK_IMPORTED_MODULE_0___default.a(); // サンプル動作
-// const sample_url = 'https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114';
-// console.log(gss_csv_url.url(sample_url));
+var gss_csv_url = new gss_csv_url__WEBPACK_IMPORTED_MODULE_0___default.a(); // @see https://stackoverflow.com/a/6941653/2405335
 
-var base_url = 'https://gss-api-6g5ky6iza.now.sh/v1.php';
-var axios = axios__WEBPACK_IMPORTED_MODULE_1___default.a.create({
-  baseURL: 'https://gss-api-p2xtmy7uh.now.sh/',
-  headers: {
-    'Content-Type': 'application/json',
-    'X-Requested-With': 'XMLHttpRequest'
-  },
-  responseType: 'json'
-});
-var query = 'v1.php?gss_id=1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE&gid=635058114'; // バックエンドB のURL:port を指定する
+var base_url = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
+/**
+ * 実際にエンドポイントへリクエストを投げて結果を表示する。
+ */
 
-axios.get(query).then(function (response) {
-  // [4] フロントエンドに対してレスポンスを返す
-  res.render('index', response.data);
-}).catch(function (error) {
-  console.log('ERROR!! occurred in Backend.');
-});
+function request(gss_id, gid) {
+  // エンドポイントへのリクエスト
+  // e.g. 'v1.php?gss_id=1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE&gid=635058114';
+  var query = 'v1.php?gss_id=' + gss_id + '&gid=' + gid;
+  var axios = axios__WEBPACK_IMPORTED_MODULE_1___default.a.create({
+    baseURL: base_url,
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    },
+    responseType: 'json'
+  });
+  axios.get(query).then(function (response) {
+    // [4] フロントエンドに対してレスポンスを返す
+    // res.render('index', response.data);
+    document.getElementById('response').value = JSON.stringify(response.data);
+  }).catch(function (error) {
+    console.log('ERROR!! occurred in Backend.');
+  });
+}
+/**
+ * cURLコマンドの表示
+ *
+ * @type {{}}
+ */
 
-var buttonClicked = function buttonClicked(_ref) {
+
+var refreshCurl = function refreshCurl(gss_id, gid) {
+  var output_url = base_url + '?gss_id=' + gss_id + '&gid=' + gid;
+  document.getElementById('output_url').value = output_url;
+};
+/**
+ * URL変化の際にリフレッシュ
+ *
+ * @param target
+ */
+
+
+var refresh = function refresh(_ref) {
   var target = _ref.target;
-
+  console.log('url changed');
   /**
    * Inputに入っているURL
    */
+
   var url = document.getElementById('url').value;
   var gss_id = gss_csv_url.fileid(url);
   var gid = gss_csv_url.gid(url);
-  var output_url = base_url + '?gss_id=' + gss_id + '&gid=' + gid;
-  document.getElementById('output-url').value = output_url;
-  target.classList.toggle('teal');
+  refreshCurl(gss_id, gid);
+  request(gss_id, gid);
 };
+/**
+ * サンプルでテスト。
+ */
 
-document.getElementById('convert-button').onclick = buttonClicked;
+
+var testWithSample = function testWithSample() {
+  console.log('clicked');
+  document.getElementById('url').value = 'https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114';
+  refresh(document.getElementById('url')); // ページロード時に実行
+}; // @see https://developer.mozilla.org/en-US/docs/Web/Events/change
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('url').onchange = refresh; // refresh(document.getElementById('url')); // ページロード時に実行
+
+  document.querySelector('.test_with_sample').onclick = testWithSample;
+}, false);
 
 /***/ }),
 
@@ -11746,14 +11784,14 @@ module.exports = g;
 /***/ }),
 
 /***/ 0:
-/*!****************************************!*\
-  !*** multi @babel/polyfill ./index.js ***!
-  \****************************************/
+/*!******************************************!*\
+  !*** multi @babel/polyfill ./js/main.js ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! @babel/polyfill */"./node_modules/@babel/polyfill/lib/index.js");
-module.exports = __webpack_require__(/*! ./index.js */"./index.js");
+module.exports = __webpack_require__(/*! ./js/main.js */"./js/main.js");
 
 
 /***/ })
