@@ -16,9 +16,8 @@
 </head>
 <body>
 <div class="main">
-    Googleスプレッドシート(GSS)をREST APIのGETっぽく使えるようにするゲートウェイ。<br>
-    GSSの共有URLを入力すると、RESTで取得できるURLを生成します。<br>
-
+    Googleスプレッドシート(GSS)をREST APIのGETとして取得します。<br>
+    GSSの共有URLを入力するとRESTで取得できるURLを生成します。<br>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">GSS URL</span>
@@ -28,17 +27,18 @@
                value="https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114"
         >
     </div>
+    <a href="#">Test with sample</a>
 
     <button type="button" id="convert-button" class="btn btn-outline-secondary">GET API</button>
 
     <div>
         cURL Command:
-        <textarea id="output_url" class="form-control" aria-label="With textarea"></textarea>
+        <textarea id="output_url" rows="5" class="form-control" aria-label="With textarea"></textarea>
     </div>
 
     <div>
         Sample Response:
-        <textarea id="response" class="form-control" aria-label="With textarea"></textarea>
+        <textarea id="response" rows="5" class="form-control" aria-label="With textarea"></textarea>
     </div>
 </div>
 </body>

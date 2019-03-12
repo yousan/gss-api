@@ -52,7 +52,9 @@ const refreshCurl = (gss_id, gid) => {
  *
  * @param target
  */
-const buttonClicked = ({target}) => {
+const refresh = ({target}) => {
+    console.log('url changed');
+
     /**
      * Inputに入っているURL
      */
@@ -64,5 +66,11 @@ const buttonClicked = ({target}) => {
     request(gss_id, gid);
 };
 
-document.getElementById('convert-button').onclick = buttonClicked;
+
+// @see https://developer.mozilla.org/en-US/docs/Web/Events/change
+document.addEventListener('DOMContentLoaded',function() {
+    document.getElementById('url').onchange = refresh;
+    // document.querySelector('select[name="ice-cream"]').onchange=changeEventHandler;
+},false);
+
 

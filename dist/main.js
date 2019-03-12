@@ -148,20 +148,24 @@ var refreshCurl = function refreshCurl(gss_id, gid) {
  */
 
 
-var buttonClicked = function buttonClicked(_ref) {
+var refresh = function refresh(_ref) {
   var target = _ref.target;
-
+  console.log('url changed');
   /**
    * Inputに入っているURL
    */
+
   var url = document.getElementById('url').value;
   var gss_id = gss_csv_url.fileid(url);
   var gid = gss_csv_url.gid(url);
   refreshCurl(gss_id, gid);
   request(gss_id, gid);
-};
+}; // @see https://developer.mozilla.org/en-US/docs/Web/Events/change
 
-document.getElementById('convert-button').onclick = buttonClicked;
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('url').onchange = refresh; // document.querySelector('select[name="ice-cream"]').onchange=changeEventHandler;
+}, false);
 
 /***/ }),
 
