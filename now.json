@@ -1,7 +1,10 @@
 {
+    "__sample": "https://github.com/zeit/now-examples/blob/master/now.json",
     "alias": "gss-api",
     "builds": [
-        { "src": "*.php", "use": "@now/php" }
+        { "src": "*.php", "use": "@now/php" },
+        { "src": "*.html", "use": "@now/static" },
+        { "src": "js/", "use": "@now/static" }
     ],
     "files": [
         "v1.php", "index.html", "dist/main.js"
