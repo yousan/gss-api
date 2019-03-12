@@ -103,27 +103,50 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var gss_csv_url = new gss_csv_url__WEBPACK_IMPORTED_MODULE_0___default.a(); // サンプル動作
-// const sample_url = 'https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114';
-// console.log(gss_csv_url.url(sample_url));
+var gss_csv_url = new gss_csv_url__WEBPACK_IMPORTED_MODULE_0___default.a(); // @see https://stackoverflow.com/a/6941653/2405335
 
-var base_url = 'https://gss-api-6g5ky6iza.now.sh/v1.php';
-var axios = axios__WEBPACK_IMPORTED_MODULE_1___default.a.create({
-  baseURL: 'https://gss-api-p2xtmy7uh.now.sh/',
-  headers: {
-    'Content-Type': 'application/json',
-    'X-Requested-With': 'XMLHttpRequest'
-  },
-  responseType: 'json'
-});
-var query = 'v1.php?gss_id=1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE&gid=635058114'; // バックエンドB のURL:port を指定する
+var base_url = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
+/**
+ * 実際にエンドポイントへリクエストを投げて結果を表示する。
+ */
 
-axios.get(query).then(function (response) {
-  // [4] フロントエンドに対してレスポンスを返す
-  res.render('index', response.data);
-}).catch(function (error) {
-  console.log('ERROR!! occurred in Backend.');
-});
+function request(gss_id, gid) {
+  // エンドポイントへのリクエスト
+  // e.g. 'v1.php?gss_id=1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE&gid=635058114';
+  var query = 'v1.php?gss_id=' + gss_id + '&gid=' + gid;
+  var axios = axios__WEBPACK_IMPORTED_MODULE_1___default.a.create({
+    baseURL: base_url,
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    },
+    responseType: 'json'
+  });
+  axios.get(query).then(function (response) {
+    // [4] フロントエンドに対してレスポンスを返す
+    // res.render('index', response.data);
+    document.getElementById('response').value = JSON.stringify(response.data);
+  }).catch(function (error) {
+    console.log('ERROR!! occurred in Backend.');
+  });
+}
+/**
+ * cURLコマンドの表示
+ *
+ * @type {{}}
+ */
+
+
+var refreshCurl = function refreshCurl(gss_id, gid) {
+  var output_url = base_url + '?gss_id=' + gss_id + '&gid=' + gid;
+  document.getElementById('output_url').value = output_url;
+};
+/**
+ * ボタン押下時
+ *
+ * @param target
+ */
+
 
 var buttonClicked = function buttonClicked(_ref) {
   var target = _ref.target;
@@ -134,9 +157,8 @@ var buttonClicked = function buttonClicked(_ref) {
   var url = document.getElementById('url').value;
   var gss_id = gss_csv_url.fileid(url);
   var gid = gss_csv_url.gid(url);
-  var output_url = base_url + '?gss_id=' + gss_id + '&gid=' + gid;
-  document.getElementById('output-url').value = output_url;
-  target.classList.toggle('teal');
+  refreshCurl(gss_id, gid);
+  request(gss_id, gid);
 };
 
 document.getElementById('convert-button').onclick = buttonClicked;
