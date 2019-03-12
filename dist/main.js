@@ -169,6 +169,7 @@ var refresh = function refresh(_ref) {
 var testWithSample = function testWithSample() {
   console.log('clicked');
   document.getElementById('url').value = 'https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114';
+  refresh(document.getElementById('url')); // ページロード時に実行
 }; // @see https://developer.mozilla.org/en-US/docs/Web/Events/change
 
 
