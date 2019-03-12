@@ -164,7 +164,8 @@ var refresh = function refresh(_ref) {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('url').onchange = refresh; // document.querySelector('select[name="ice-cream"]').onchange=changeEventHandler;
+  document.getElementById('url').onchange = refresh;
+  refresh(document.getElementById('url')); // document.querySelector('select[name="ice-cream"]').onchange=changeEventHandler;
 }, false);
 
 /***/ }),

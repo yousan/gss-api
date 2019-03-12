@@ -70,6 +70,7 @@ const refresh = ({target}) => {
 // @see https://developer.mozilla.org/en-US/docs/Web/Events/change
 document.addEventListener('DOMContentLoaded',function() {
     document.getElementById('url').onchange = refresh;
+    refresh(document.getElementById('url'));
     // document.querySelector('select[name="ice-cream"]').onchange=changeEventHandler;
 },false);
 
