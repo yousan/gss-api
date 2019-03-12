@@ -66,9 +66,19 @@ const refresh = ({target}) => {
     request(gss_id, gid);
 };
 
+/**
+ * サンプルでテスト。
+ */
+const testWithSample = () => {
+    console.log('clicked');
+    document.getElementById('url').value = 'https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114';
+};
+
 
 // @see https://developer.mozilla.org/en-US/docs/Web/Events/change
 document.addEventListener('DOMContentLoaded',function() {
     document.getElementById('url').onchange = refresh;
-    refresh(document.getElementById('url'));
+    // refresh(document.getElementById('url')); // ページロード時に実行
+
+    document.querySelector('.test_with_sample').onclick = testWithSample;
 },false);
