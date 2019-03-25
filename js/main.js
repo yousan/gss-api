@@ -29,7 +29,7 @@ function request(gss_id, gid) {
         .then(function (response) {
             // [4] フロントエンドに対してレスポンスを返す
             // res.render('index', response.data);
-            document.getElementById('response').value =  JSON.stringify(response.data);
+            document.getElementById('response').value =  JSON.stringify(response.data, null, 2);
         })
         .catch(function (error) {
             console.log('ERROR!! occurred in Backend.')
@@ -77,7 +77,11 @@ const testWithSample = () => {
 };
 
 
-// @see https://developer.mozilla.org/en-US/docs/Web/Events/change
+/**
+ * inputの変更のイベントリスナ
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/Events/change
+ */
 document.addEventListener('DOMContentLoaded',function() {
     document.getElementById('url').onchange = refresh;
     // refresh(document.getElementById('url')); // ページロード時に実行
