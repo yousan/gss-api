@@ -10,7 +10,18 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         div.main {
-            padding: 10px;
+            padding: 10px 30px;
+        }
+
+        header {
+            background-color: black;
+            height: 200px;
+            padding: 80px 10px;
+            margin: auto;
+            color: whitesmoke;
+        }
+        #url {
+            height: 5em;
         }
 
         .icon {
@@ -25,22 +36,33 @@
     </style>
 </head>
 <body>
+<a href="https://github.com/yousan/gss-api"><img
+        style="position: absolute; top: 0; right: 0; border: 0; padding: 0; margin: 0; box-shadow: none;"
+        src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67"
+        alt="Fork me on GitHub"
+        data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+<header class="inner" style="">
+    <h1 id="project_title">GoogleスプレッドシートからJSONにする</h1>
+</header>
 <div class="main">
-    Googleスプレッドシート(GSS)をREST APIのGETとして取得します。<br>
-    GSSの共有URLを入力するとRESTで取得できるURLを生成します。<br>
-    <div class="input-group mb-3">
+    <div class="input-group">
         <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">GSS URL</span>
         </div>
-        <input type="text" id="url" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
+        <input type="text" id="url" class="form-control" aria-label="Default"
+               aria-describedby="inputGroup-sizing-default"
                placeholder="https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114"
                value=""
         >
     </div>
-    <a class="test_with_sample" href="#">Test with sample</a>
-    <a class="icon" target="_blank" href="https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114"></a>
-
-    <div>
+    <small>GSSの共有URLを入力するとcurlコマンドとレスポンス例が表示されます。</small>
+    <small><a class="test_with_sample" href="#">サンプルのGSSで動作を確認する</a></small>
+    <a class="icon" target="_blank"
+       style="padding: 0; margin: 0;"
+       href="https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114"
+    ></a>
+    <hr>
+    <div class="mb-5">
         cURL Command:
         <textarea id="output_url" rows="5" class="form-control" aria-label="With textarea"></textarea>
     </div>
@@ -49,6 +71,28 @@
         Sample Response:
         <textarea id="response" rows="5" class="form-control" aria-label="With textarea"></textarea>
     </div>
+    <hr>
+    <div class="help">
+        <h3>使い方など</h3>
+        <h4>できることなど</h4>
+        <p>
+            Googleスプレッドシート(GSS)をREST APIのGETとして取得します。<br>
+            GSSの共有URLを入力するとRESTで取得できるURLを生成します。<br>
+            REST APIを使ったシステム開発の際に、RDBとエンドポイントを作成しなくてもサクッとテストをできるといいな、と思って作っています。
+        </p>
+        <h4>事前準備</h4>
+        <p>
+            GSSでスプレッドシートを作成し、リンクで共有します。
+            シートのURLをコピーしてinputに貼り付けます。その際にシートごとにURLが違います。
+            選択されたシートに対してJSONを作成します。
+        </p>
+        <h4>GSSのフォーマットについて</h4>
+        <p>
+            GSS1行目を列名として扱います。JSONで返却される際のプロパティ名となります。
+            1列目が空行の列はコメントとして扱います。
+        </p>
+    </div>
+
 </div>
 </body>
 <script src="dist/main.js"></script>
