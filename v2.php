@@ -50,10 +50,10 @@ function parseCSV( $url ) {
 			}
 		}
 		if ( empty( $data['created_at'] ) ) {
-			$data['created'] = date( 'Y-m-d H:i:s' );
+			$data['created_at'] = date( 'Y-m-d H:i:s' );
 		}
 		if ( empty( $data['updated_at'] ) ) {
-			$data['modified'] = date( 'Y-m-d H:i:s' );
+			$data['updated_at'] = date( 'Y-m-d H:i:s' );
 		}
 
 		$datas[] = $data;
