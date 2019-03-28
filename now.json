@@ -7,7 +7,7 @@
         { "src": "*.php", "use": "@now/php" }
     ],
     "files": [
-        "v1.php", "index.html", "dist/main.js"
+        "v1.php", "v2.php","index.html", "dist/main.js"
     ],
     "version": 2
 }
