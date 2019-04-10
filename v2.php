@@ -49,11 +49,11 @@ function parseCSV( $url ) {
 				unset( $data[ $key ] ); // 空行は許されないのでNULLにしておく
 			}
 		}
-		if ( empty( $data['created'] ) ) {
-			$data['created'] = date( 'Y-m-d H:i:s' );
+		if ( empty( $data['created_at'] ) ) {
+			$data['created_at'] = date( 'Y-m-d H:i:s' );
 		}
-		if ( empty( $data['modified'] ) ) {
-			$data['modified'] = date( 'Y-m-d H:i:s' );
+		if ( empty( $data['updated_at'] ) ) {
+			$data['updated_at'] = date( 'Y-m-d H:i:s' );
 		}
 
 		$datas[] = $data;
@@ -74,7 +74,6 @@ function main() {
 
 	$data = parseCSV($url);
 	header("Access-Control-Allow-Origin: *");
-	header('Access-Control-Allow-Methods: *');
 
 	echo json_encode($data);
 }
