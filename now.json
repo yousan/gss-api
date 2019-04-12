@@ -1,5 +1,8 @@
 {
     "alias": "gss-api",
+    "github": {
+        "enabled": true
+    },
     "builds": [
         { "src": "*.html", "use": "@now/static" },
         { "src": "dist/*", "use": "@now/static" },
