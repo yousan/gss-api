@@ -72,11 +72,15 @@ function main() {
 
 	$url = 'https://docs.google.com/spreadsheets/d/' . $gss_id . '/export?format=csv&gid=' . $gid;
 
-	$data = parseCSV($url);
-	header("Access-Control-Allow-Origin: *");
-	header('Access-Control-Allow-Methods: *');
+	$data = parseCSV( $url );
+	header( "Access-Control-Allow-Origin: *" );
+	header( 'Access-Control-Allow-Methods: GET, POST, OPTIONS' );
+//	header("Access-Control-Allow-Headers: X-Requested-With");
+	// header( 'Access-Control-Allow-Headers: Content-Type' );
+	header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+	header( 'Content-Type: application/json' );
 
-	echo json_encode($data);
+	echo json_encode( $data );
 }
 
 main();
