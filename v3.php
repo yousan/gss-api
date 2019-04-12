@@ -75,7 +75,7 @@ function main() {
 	$data = parseCSV($url);
 	header("Access-Control-Allow-Origin: *");
 
-	echo json_encode($data);
+	echo json_encode($data, JSON_PRETTY_PRINT);
 }
 
 main();
