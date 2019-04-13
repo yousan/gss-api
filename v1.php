@@ -63,11 +63,10 @@ function parseCSV( $url ) {
 }
 
 function main() {
-// https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114
-
-// スプレッドシートのID
+    // e.g. https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114
+    // スプレッドシートのID
 	$gss_id = $_GET['gss_id'];
-// シートID
+    // シートID
 	$gid = $_GET['gid'];
 
 	$url = 'https://docs.google.com/spreadsheets/d/' . $gss_id . '/export?format=csv&gid=' . $gid;
@@ -75,9 +74,7 @@ function main() {
 	$data = parseCSV( $url );
 	header( "Access-Control-Allow-Origin: *" );
 	header( 'Access-Control-Allow-Methods: GET, POST, OPTIONS' );
-//	header("Access-Control-Allow-Headers: X-Requested-With");
-	// header( 'Access-Control-Allow-Headers: Content-Type' );
-	header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+	header( 'Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization' );
 	header( 'Content-Type: application/json' );
 
 	echo json_encode( $data );
