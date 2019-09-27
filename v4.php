@@ -6,6 +6,7 @@
  * Time: 18:17
  */
 
+ini_set('memory_limit', '256M');
 
 function main1() {
 // https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114
