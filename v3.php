@@ -49,11 +49,11 @@ function parseCSV( $url ) {
 				unset( $data[ $key ] ); // 空行は許されないのでNULLにしておく
 			}
 		}
-		if ( empty( $data['created'] ) ) {
-			$data['created'] = date( 'Y-m-d H:i:s' );
+		if ( empty( $data['createdAt'] ) ) {
+			$data['createdAt'] = date( 'U' );
 		}
-		if ( empty( $data['modified'] ) ) {
-			$data['modified'] = date( 'Y-m-d H:i:s' );
+		if ( empty( $data['modifiedAt'] ) ) {
+			$data['modifiedAt'] = date( 'U' );
 		}
 
 		$datas[] = $data;
@@ -63,21 +63,19 @@ function parseCSV( $url ) {
 }
 
 function main() {
-    // e.g. https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114
-    // スプレッドシートのID
+// https://docs.google.com/spreadsheets/d/1m4BI7R-CcjNREH4DUe1xCM3OIVVSGrGx6-7iUtIvUWE/edit#gid=635058114
+
+// スプレッドシートのID
 	$gss_id = $_GET['gss_id'];
-    // シートID
+// シートID
 	$gid = $_GET['gid'];
 
 	$url = 'https://docs.google.com/spreadsheets/d/' . $gss_id . '/export?format=csv&gid=' . $gid;
 
-	$data = parseCSV( $url );
-	header( "Access-Control-Allow-Origin: *" );
-	header( 'Access-Control-Allow-Methods: GET, POST, OPTIONS' );
-	header( 'Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization' );
-	header( 'Content-Type: application/json' );
+	$data = parseCSV($url);
+	header("Access-Control-Allow-Origin: *");
 
-	echo json_encode( $data );
+	echo json_encode($data, JSON_PRETTY_PRINT);
 }
 
 main();
