@@ -7,7 +7,7 @@
         { "src": "*.html", "use": "@now/static" },
         { "src": "dist/*", "use": "@now/static" },
         { "src": "images/*", "use": "@now/static" },
-        { "src": "*.php", "use": "@now/php" }
+        { "src": "*.php", "use": "now-php@0.0.9" }
     ],
     "files": [
         "v1.php", "v2.php","index.html", "dist/main.js", "v4.php"
