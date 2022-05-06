@@ -9,8 +9,5 @@
         { "src": "images/*", "use": "@now/static" },
         { "src": "*.php", "use": "now-php@0.0.9" }
     ],
-    "_files": [
-        "v1.php", "v2.php","index.html", "dist/main.js", "v4.php"
-    ],
     "version": 2
 }
